@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>SafePulse — Data-Driven Emergency Response & Triage System</title>
+  <meta name="description" content="SafePulse: Priority-first emergency guidance and machine learning urgency classification with Phantom Protocol offline edge resilience.">
+
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <link rel="stylesheet" href="/css/emergency.css">
+
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#e03145">
+</head>
+<body>
+
+  <!-- Sidebar Backdrop -->
+  <div id="sidebarBackdrop" class="sidebar-backdrop" onclick="closeSidebar()"></div>
+
+  <!-- Slide-in Sidebar -->
+  <aside id="appSidebar" class="app-sidebar">
+    <!-- Sidebar Header -->
+    <div class="sidebar-header">
+      <div class="brand-wrap" onclick="closeSidebar(); SafePulseState.setView('home')" style="cursor:pointer">
+        <div class="brand-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1 style="font-size:18px">Safe<span>Pulse</span></h1>
+          <p style="font-size:11px">Emergency Intelligence</p>
+        </div>
+      </div>
+      <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close sidebar">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <!-- System Status in Sidebar -->
+    <div class="sidebar-status">
+      <div id="sidebarProtocolBadge" class="protocol-pill" style="width:100%;justify-content:center;">
+        <span class="dot"></span>
+        <span>SYSTEM ONLINE</span>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="sidebar-nav">
+      <p class="sidebar-section-label">Navigation</p>
+      <button class="sidebar-nav-item active" data-view="home" onclick="closeSidebar(); SafePulseState.setView('home')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+        Home
+      </button>
+      <button class="sidebar-nav-item" data-view="firstaid" onclick="closeSidebar(); SafePulseState.setView('firstaid')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        First-Aid
+      </button>
+      <button class="sidebar-nav-item" data-view="analytics" onclick="closeSidebar(); SafePulseState.setView('analytics')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        ML Analytics
+      </button>
+      <button class="sidebar-nav-item" data-view="history" onclick="closeSidebar(); SafePulseState.setView('history')">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Audit Log
+      </button>
+    </nav>
+
+    <!-- Action Buttons in Sidebar -->
+    <div class="sidebar-actions">
+      <p class="sidebar-section-label">Quick Actions</p>
+
+      <!-- Voice Assistant -->
+      <button class="sidebar-action-btn" onclick="closeSidebar(); SafePulseState.setView('home'); setTimeout(() => { const card = document.getElementById('voiceCard'); if(card) card.scrollIntoView({behavior:'smooth'}); const mic = document.getElementById('btnVoiceMic'); if(mic) mic.click(); }, 200);">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 003-3V5a3 3 0 10-6 0v6a3 3 0 003 3z"/></svg>
+        Voice Assistant
+      </button>
+
+      <!-- Mute Toggle -->
+      <button id="sidebarMuteBtn" class="sidebar-action-btn" onclick="SafePulseState.toggleVoiceMute(); updateSidebarMuteLabel();">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/></svg>
+        <span id="sidebarMuteLabel">Mute Voice</span>
+      </button>
+
+      <!-- Dark Mode Toggle -->
+      <button class="sidebar-action-btn" onclick="SafePulseState.toggleDarkMode()">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+        Toggle Dark Mode
+      </button>
+    </div>
+
+    <!-- SOS Call Button at Bottom -->
+    <div class="sidebar-sos">
+      <a href="tel:112" class="btn-sos" style="width:100%;justify-content:center;border-radius:var(--radius-md);padding:14px;font-size:15px;">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        CALL 112 / 911
+      </a>
+    </div>
+  </aside>
+
+  <!-- Top Navigation Header -->
+  <header class="top-nav">
+    <div class="top-nav-left">
+      <!-- Hamburger Menu Button -->
+      <button class="hamburger-btn" id="hamburgerBtn" onclick="openSidebar()" aria-label="Open navigation menu">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+
+      <!-- Brand Identity -->
+      <div class="brand-wrap" onclick="SafePulseState.setView('home')">
+        <div class="brand-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </div>
+        <div class="brand-text">
+          <h1>Safe<span>Pulse</span></h1>
+          <p>Emergency Intelligence</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Header Action (Emergency SOS Call Button) -->
+    <div class="nav-actions">
+      <a href="tel:112" class="btn-sos" title="Direct Emergency Call (112 / 911)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        <span>CALL 112 / 911</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Viewports Container -->
+  <main class="app-container">
+    <div id="homeView" class="view-screen"></div>
+    <div id="wizardView" class="view-screen hidden"></div>
+    <div id="criticalView" class="view-screen hidden"></div>
+    <div id="resultView" class="view-screen hidden"></div>
+    <div id="firstAidView" class="view-screen hidden"></div>
+    <div id="analyticsView" class="view-screen hidden"></div>
+    <div id="historyView" class="view-screen hidden"></div>
+  </main>
+
+  <!-- Application Logic Scripts -->
+  <script src="/js/state.js"></script>
+  <script src="/js/phantom_engine.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/audio_metronome.js"></script>
+  <script src="/js/voice_assistant.js"></script>
+  <script src="/js/triage_wizard.js"></script>
+  <script src="/js/first_aid.js"></script>
+  <script src="/js/analytics_view.js"></script>
+  <script src="/js/app.js"></script>
+  <script>
+    function openSidebar() {
+      document.getElementById('appSidebar').classList.add('open');
+      document.getElementById('sidebarBackdrop').classList.add('open');
+    }
+    function closeSidebar() {
+      document.getElementById('appSidebar').classList.remove('open');
+      document.getElementById('sidebarBackdrop').classList.remove('open');
+    }
+    function updateSidebarMuteLabel() {
+      const label = document.getElementById('sidebarMuteLabel');
+      if (label) label.textContent = SafePulseState.isVoiceMuted ? 'Unmute Voice' : 'Mute Voice';
+    }
+    // Sync sidebar active nav item with main nav
+    document.addEventListener('DOMContentLoaded', () => {
+      const orig = SafePulseState.setView.bind(SafePulseState);
+      SafePulseState.setView = (view) => {
+        orig(view);
+        document.querySelectorAll('.sidebar-nav-item').forEach(b => {
+          b.classList.toggle('active', b.dataset.view === view);
+        });
+      };
+    });
+  </script>
+</body>
+</html>

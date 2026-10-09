@@ -1,0 +1,8 @@
+{
+  "appId": "com.safepulse.app",
+  "appName": "SafePulse",
+  "webDir": "frontend",
+  "server": {
+    "androidScheme": "https"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "SafePulse Emergency Response",
+  "short_name": "SafePulse",
+  "description": "Data-Driven Emergency Response & Offline Triage System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0f17",
+  "theme_color": "#e03145",
+  "icons": [
+    {
+      "src": "/static/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

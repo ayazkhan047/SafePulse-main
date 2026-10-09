@@ -1,0 +1,315 @@
+{
+  "model_type": "SafePulse Pure-NumPy Random Forest Ensemble (10 Trees, Stratified)",
+  "classes": [
+    "LOW",
+    "MODERATE",
+    "HIGH"
+  ],
+  "feature_names": [
+    "quick_critical",
+    "severity_score",
+    "extent_affected",
+    "duration_mins",
+    "breathing_difficulty",
+    "consciousness_level",
+    "pain_level",
+    "cat_bleeding",
+    "cat_burns",
+    "cat_choking",
+    "cat_cardiac",
+    "cat_injury",
+    "age_child",
+    "age_adult",
+    "age_elderly"
+  ],
+  "sample_size": 1500,
+  "test_size": 374,
+  "metrics": {
+    "accuracy": 0.8904,
+    "precision_macro": 0.8562,
+    "recall_macro": 0.8978,
+    "f1_macro": 0.8738,
+    "per_class": {
+      "LOW": {
+        "precision": 0.7941,
+        "recall": 0.9153,
+        "f1": 0.8504,
+        "support": 59
+      },
+      "MODERATE": {
+        "precision": 0.8,
+        "recall": 0.898,
+        "f1": 0.8462,
+        "support": 98
+      },
+      "HIGH": {
+        "precision": 0.9745,
+        "recall": 0.8802,
+        "f1": 0.9249,
+        "support": 217
+      }
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "LOW",
+      "MODERATE",
+      "HIGH"
+    ],
+    "matrix": [
+      [
+        54,
+        5,
+        0
+      ],
+      [
+        5,
+        88,
+        5
+      ],
+      [
+        9,
+        17,
+        191
+      ]
+    ]
+  },
+  "feature_importances": [
+    {
+      "feature": "quick_critical",
+      "importance": 0.4768
+    },
+    {
+      "feature": "severity_score",
+      "importance": 0.1604
+    },
+    {
+      "feature": "cat_injury",
+      "importance": 0.0752
+    },
+    {
+      "feature": "cat_choking",
+      "importance": 0.0552
+    },
+    {
+      "feature": "cat_burns",
+      "importance": 0.054
+    },
+    {
+      "feature": "pain_level",
+      "importance": 0.0485
+    },
+    {
+      "feature": "cat_bleeding",
+      "importance": 0.0482
+    },
+    {
+      "feature": "extent_affected",
+      "importance": 0.0353
+    },
+    {
+      "feature": "age_elderly",
+      "importance": 0.0189
+    },
+    {
+      "feature": "cat_cardiac",
+      "importance": 0.016
+    },
+    {
+      "feature": "duration_mins",
+      "importance": 0.0109
+    },
+    {
+      "feature": "age_child",
+      "importance": 0.0007
+    },
+    {
+      "feature": "breathing_difficulty",
+      "importance": 0.0
+    },
+    {
+      "feature": "consciousness_level",
+      "importance": 0.0
+    },
+    {
+      "feature": "age_adult",
+      "importance": 0.0
+    }
+  ],
+  "decision_tree_export": {
+    "feature": 0,
+    "threshold": 0.0,
+    "left": {
+      "feature": 1,
+      "threshold": 1.0,
+      "left": {
+        "feature": 11,
+        "threshold": 0.0,
+        "left": {
+          "feature": 9,
+          "threshold": 0.0,
+          "left": {
+            "feature": 2,
+            "threshold": 1.0,
+            "left": {
+              "feature": 10,
+              "threshold": 0.0,
+              "left": {
+                "value": "LOW",
+                "probas": {
+                  "LOW": 0.6522,
+                  "MODERATE": 0.0,
+                  "HIGH": 0.3478
+                }
+              },
+              "right": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.1667,
+                  "MODERATE": 0.75,
+                  "HIGH": 0.0833
+                }
+              }
+            },
+            "right": {
+              "feature": 3,
+              "threshold": 36.857142857142854,
+              "left": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.069,
+                  "MODERATE": 0.4655,
+                  "HIGH": 0.4655
+                }
+              },
+              "right": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.0625,
+                  "MODERATE": 0.8125,
+                  "HIGH": 0.125
+                }
+              }
+            }
+          },
+          "right": {
+            "value": "LOW",
+            "probas": {
+              "LOW": 1.0,
+              "MODERATE": 0.0,
+              "HIGH": 0.0
+            }
+          }
+        },
+        "right": {
+          "value": "LOW",
+          "probas": {
+            "LOW": 1.0,
+            "MODERATE": 0.0,
+            "HIGH": 0.0
+          }
+        }
+      },
+      "right": {
+        "feature": 9,
+        "threshold": 0.0,
+        "left": {
+          "feature": 1,
+          "threshold": 2.0,
+          "left": {
+            "feature": 8,
+            "threshold": 0.0,
+            "left": {
+              "feature": 14,
+              "threshold": 0.0,
+              "left": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.0631,
+                  "MODERATE": 0.8198,
+                  "HIGH": 0.1171
+                }
+              },
+              "right": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.0789,
+                  "MODERATE": 0.5789,
+                  "HIGH": 0.3421
+                }
+              }
+            },
+            "right": {
+              "feature": 6,
+              "threshold": 7.0,
+              "left": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.0,
+                  "MODERATE": 0.5833,
+                  "HIGH": 0.4167
+                }
+              },
+              "right": {
+                "value": "HIGH",
+                "probas": {
+                  "LOW": 0.0,
+                  "MODERATE": 0.0,
+                  "HIGH": 1.0
+                }
+              }
+            }
+          },
+          "right": {
+            "feature": 7,
+            "threshold": 0.0,
+            "left": {
+              "feature": 11,
+              "threshold": 0.0,
+              "left": {
+                "value": "MODERATE",
+                "probas": {
+                  "LOW": 0.1905,
+                  "MODERATE": 0.5,
+                  "HIGH": 0.3095
+                }
+              },
+              "right": {
+                "value": "LOW",
+                "probas": {
+                  "LOW": 0.6271,
+                  "MODERATE": 0.2373,
+                  "HIGH": 0.1356
+                }
+              }
+            },
+            "right": {
+              "value": "HIGH",
+              "probas": {
+                "LOW": 0.0,
+                "MODERATE": 0.0,
+                "HIGH": 1.0
+              }
+            }
+          }
+        },
+        "right": {
+          "value": "MODERATE",
+          "probas": {
+            "LOW": 0.0,
+            "MODERATE": 1.0,
+            "HIGH": 0.0
+          }
+        }
+      }
+    },
+    "right": {
+      "value": "HIGH",
+      "probas": {
+        "LOW": 0.0,
+        "MODERATE": 0.0,
+        "HIGH": 1.0
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+:root {
+  /* Brand & Emergency Severity Palettes */
+  --red-500: #e03145;
+  --red-600: #c2243a;
+  --red-100: #ffebee;
+  --red-50: #fff5f5;
+  --red-glow: rgba(224, 49, 69, 0.35);
+
+  --amber-500: #e8761c;
+  --amber-600: #c75e0e;
+  --amber-100: #fff3e0;
+  --amber-50: #fffbf5;
+  --amber-glow: rgba(232, 118, 28, 0.3);
+
+  --green-500: #12a66f;
+  --green-600: #0d8357;
+  --green-100: #e6f8f1;
+  --green-50: #f2fcf8;
+  --green-glow: rgba(18, 166, 111, 0.3);
+
+  --blue-500: #2563eb;
+  --blue-600: #1d4ed8;
+  --blue-100: #eff6ff;
+
+  --purple-500: #6f63e0;
+  --purple-100: #f3f0ff;
+
+  /* Neutrals & Surfaces (High Contrast & Clean) */
+  --bg-main: #f8fafc;
+  --surface-card: #ffffff;
+  --surface-alt: #f1f5f9;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --border-subtle: #e2e8f0;
+  --border-medium: #cbd5e1;
+  --border-focus: #3b82f6;
+
+  /* Typography Colors */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-inverse: #ffffff;
+
+  /* Typography Families */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Shadows & Elevations */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+  --shadow-glow-red: 0 0 25px rgba(224, 49, 69, 0.4);
+  --shadow-glow-amber: 0 0 25px rgba(232, 118, 28, 0.35);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dark Emergency Mode */
+body.dark-mode {
+  --bg-main: #0b0f17;
+  --surface-card: #151c28;
+  --surface-alt: #1e293b;
+  --surface-glass: rgba(21, 28, 40, 0.88);
+  --border-subtle: #243248;
+  --border-medium: #334155;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
